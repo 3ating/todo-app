@@ -1,17 +1,13 @@
-import React, { useState } from "react";
-import CheckIcon from '@mui/icons-material/Check';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { ListItemSecondaryAction } from "@mui/material";
+import React from "react";
 
 function Todo({ index, text, todo, todos, setTodos }){
 
     function deleteItem(){
 
         setTodos(todos.filter((element) => element.id !== todo.id));
-        
-        fetch('http://localhost:3001', {  
+
+        fetch('https://todo-yi-server.herokuapp.com/', {  
             method: 'DELETE', 
-            // mode: 'cors',
             headers: {
                 "Accept": "application/json",
                 'Content-Type': 'application/json',
@@ -27,6 +23,7 @@ function Todo({ index, text, todo, todos, setTodos }){
                 return res})
           .then(res => res.json())
           .catch(error => console.log(error))
+               
     }
 
     function completeHandler(){
@@ -41,9 +38,8 @@ function Todo({ index, text, todo, todos, setTodos }){
         }))
 
 
-        fetch('http://localhost:3001', {
+        fetch('https://todo-yi-server.herokuapp.com/', {
             method: 'PATCH',
-            // credentials: "include",
             headers: {
                 'Accept': 'application/json',
                 'Content-type': 'application/json'
@@ -63,6 +59,7 @@ function Todo({ index, text, todo, todos, setTodos }){
         });
 
     }
+
 
     return (
         <div className="todo">
