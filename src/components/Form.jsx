@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 
-
 function Form({ setInputText, todos, setTodos, inputText, setStatus }){
 
     function inputTextHandler(e){
