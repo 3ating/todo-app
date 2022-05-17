@@ -4,10 +4,9 @@ import Todo from "./Todo";
 function TodoList({ todos, setTodos, filteredTodos }){
 
     useEffect(() => {
-        fetch("http://localhost:3001", {
-            method: ["GET"],
-            // mode: 'cors',
-            // credentials: "include",
+        fetch("https://todo-yi-server.herokuapp.com/", {
+            method: "GET",
+            mode: 'cors',
             headers: {
                 authToken: "token",
                 "Content-Type": "application/json",
