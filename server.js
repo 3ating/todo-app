@@ -17,11 +17,8 @@ app.use(cors(corOptions));
 app.use(express.json({
   type: ['application/json', 'text/plain']
 }))
-// app.use(express.static('client/build'));
 
 mongoose.connect("mongodb+srv://yiting:Kk309612028@cluster0.ljkmi.mongodb.net/todolistDB", {useNewUrlParser: true});
-//mongodb://localhost:27017
-//myFirstDatabase?retryWrites=true&w=majority/
 
 const itemsSchema = mongoose.Schema({
   text: String,
@@ -54,31 +51,6 @@ const item3 = new Item({
 const defaultItems = [item1, item2, item3];
 
 app.route("/")
-
-// .get(function(req, res){
-//   Item.find({}, function(err, foundItems){
-
-//     if (foundItems.length === 0) {
-//       Item.insertMany(defaultItems, function(err){
-//         if (err) {
-//           console.log(err);
-//         } else {
-//           console.log("Successfully savevd default items to DB.");
-//         }
-//       })}
-    
-//       // res.set({
-//       //   // "Content-Type": "application/json",
-//       //   "Access-Control-Allow-Origin": "*",
-//       // })
-
-//     if (!err) {
-//       res.send(foundItems);
-//     } else{
-//       res.send(err);
-//     }
-//   });
-// })
 
 .get(function(req, res){
   Item.find({}, function(err, foundItems){
