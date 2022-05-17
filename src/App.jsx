@@ -19,20 +19,6 @@ function App() {
     saveLocalTodos();
   }, [todos, status]);
 
-  useEffect(() => {
-    fetchTodos();
-  }, [])
-
-  function fetchTodos(){
-    return (
-      fetch("http://localhost:3001", {method: ["GET"], credentials: "include"})
-      .then(res => res.json())
-      .then(data => {
-          // console.log(data);
-          setTodos(data);
-      })
-    )}
-
   function filterHandler(){
     switch (status){
       case "completed":
