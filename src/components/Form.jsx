@@ -1,33 +1,23 @@
-import React, { useState, useEffect } from "react";
-import Fab from '@mui/material/Fab';
-import AddIcon from '@mui/icons-material/Add';
-import TodoList from "./TodoList";
+import React, { useEffect } from "react";
 
 
 function Form({ setInputText, todos, setTodos, inputText, setStatus }){
-
-    function writeTodosToLocalStorage(todos){
-      window.localStorage.setItem("todos", JSON.stringify(todos))
-    }
-
-    useEffect(() => {
-      writeTodosToLocalStorage(todos);
-    }, [todos]);
 
     function inputTextHandler(e){
         setInputText(e.target.value)
     }
 
     function submitTodoHandler(e){
+      
         e.preventDefault();
+
         setTodos([
             ...todos, {text: inputText, completed: false, id: Math.random()*1000}
         ])
         setInputText("");
 
-        fetch('http://localhost:3001', {  
+        fetch('https://todo-yi-server.herokuapp.com/', {  
           method: 'POST',
-          // credentials: "include",
           mode: 'no-cors',
           body: JSON.stringify({text: inputText}),
           headers: {
@@ -42,6 +32,7 @@ function Form({ setInputText, todos, setTodos, inputText, setStatus }){
         }).catch(err => {
           console.log("Error Reading data " + err)
         })
+
       }
 
     function statusHandler(e){
