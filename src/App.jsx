@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
 import TodoList from './components/TodoList';
+import Theme from './components/Theme';
 import './App.css';
 
 function App() {
@@ -9,6 +10,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [status, setStatus] = useState('all');
   const [filteredTodos, setFilteredTodos] = useState([]);
+  const [dark, setDark] = useState(true);
 
   useEffect(() => {
     getLocalTodos();
@@ -47,17 +49,21 @@ function App() {
   }
 
   return (
+
     <div className="App">
       <header>
         <h1>ToDo List</h1>
       </header>
+      <Theme
+        dark={dark}
+        setDark={setDark}
+      />
       <Form
         inputText={inputText}
         todos={todos}
         setTodos={setTodos}
         setInputText={setInputText}
         setStatus={setStatus}
-        // fetchTodos={fetchTodos}
         saveLocalTodos={saveLocalTodos}
       />
       <TodoList
@@ -66,6 +72,7 @@ function App() {
         filteredTodos={filteredTodos}
       />
     </div>
+
   );
 }
 
