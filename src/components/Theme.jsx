@@ -1,6 +1,6 @@
 import React, { useMemo, useEffect } from 'react';
 import { StyledEngineProvider } from '@mui/material/styles';
-import Demo from './demo'
+import Demo from './demo';
 
 function Theme({ dark, setDark }){
 
@@ -26,7 +26,7 @@ function Theme({ dark, setDark }){
 
     return(
         <div id='button' onClick={changeTheme}>
-        <StyledEngineProvider injectFirst class="center start" >
+        <StyledEngineProvider injectFirst class="center start">
           <Demo/>
         </StyledEngineProvider>
       </div>
